@@ -35,7 +35,8 @@ export default {
         <RouterView @toggleSide="()=>toggleSide(true)"/>
       </template>
       <template #sidebar>
-        <SideBar v-show="sideBtnState" :sideBtnState="sideBtnState" :toggleSide="toggleSide"/>        
+        <SideBar v-show="sideBtnState" :sideBtnState="sideBtnState" :toggleSide="toggleSide"/>
+        
       </template>
     </main-layout>
   </div>

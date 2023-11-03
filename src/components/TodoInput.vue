@@ -4,8 +4,7 @@
             type="text" 
             v-model="task"
             ref="text"
-            :placeholder=" isEditing ? 'editing task' : totalTodos == 0 ? 'write your first task' : 'write your next task' "
-            @keydown.space.prevent 
+            :placeholder=" isEditing ? 'editing task' : totalTodos == 0 ? 'write your first task' : 'write your next task' " 
         />
         <button @click="addTaskLocal(task)">
             {{ isEditing ? '🖊' : '+' }}

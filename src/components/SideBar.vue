@@ -160,4 +160,10 @@
         margin-top: 50px;
     }
 
+    @media screen and (min-width: 768px) {
+        .container{
+            width: 30%;
+        }
+    }
+
 </style>

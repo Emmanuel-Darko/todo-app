@@ -41,8 +41,16 @@
         width: 90%;
         position: relative;
         margin-top: 20%;
+        /* border: 1px solid red; */
     }
     .app-container .side-view{
         z-index: 200;
+    }
+
+    @media screen and (min-width: 768px){
+        .app-container .body-view{
+            width: 35%;
+            margin-top: 10%;
+        }
     }
 </style>

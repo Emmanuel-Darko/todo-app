@@ -48,21 +48,25 @@
         background-color: #FF5631;
         color: #0D0D0D;
         font-size: 30px;
-        font-weight: bold;
+        font-weight: bolder;
     }
 
-    /* @media screen and (max-width: 480px){
+    @media screen and (min-width:768px){
         .banner{
-            padding: 10px 0px;
+            padding: 30px 0px;
             gap: 20px;
             justify-content: space-around;
         }
         .circle{
-            height: 20px;
-            width: 20px;
+            height: 150px;
+            width: 150px;
+            font-size: 50px;
         }
-        .text h1, .text h4{
-            font-size: 18px;
+        .text h1 {
+            font-size: 30px;
         }
-    } */
+        .text h4{
+            font-size: 25px;
+        }
+    }
 </style>
