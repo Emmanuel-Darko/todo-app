@@ -1,12 +1,15 @@
 <script>
-import MainLayout from '@/layouts/MainLayout.vue'
+import MainLayout from '@/layouts/MainLayout.vue';
 import HeaderComponent from './components/HeaderComponent.vue';
-import SideBar from '@/components/SideBar.vue'
+import SideBar from '@/components/SideBar.vue';
+import FooterComponent from '@/components/FooterComponent.vue';
+
 export default {
   components:{
     MainLayout,
     HeaderComponent,
-    SideBar
+    SideBar,
+    FooterComponent
   },
   data(){
     return{
@@ -36,7 +39,9 @@ export default {
       </template>
       <template #sidebar>
         <SideBar v-show="sideBtnState" :sideBtnState="sideBtnState" :toggleSide="toggleSide"/>
-        
+      </template>
+      <template #footer>
+        <FooterComponent />
       </template>
     </main-layout>
   </div>

@@ -1,19 +1,20 @@
 <template>
-    <div class="bar" :class="{showDoing, showEditing}">
+    <div class="bar" :class="{showDoing, showEditing, sidebar, stoppage}">
         <div @click="handleCheck(todo.id, todo.completed)" class="check" :class="{'check-active': todo?.completed}"></div>
         <div class="task" :class="{'strike': todo?.completed}">{{ todo?.name }}</div>
         <div class="actions">
-            <button @click="handleDoing(todo.id)"><span>⏳</span></button>
-            <button @click="handleEdit(todo.id)">✍</button>
-            <button @click="handleDelete(todo.id)">❌</button>
+            <button v-if="!sidebar" @click="handleDoing(todo.id)" class="blink"><span>⏳</span></button>
+            <button v-if="!sidebar" @click="handleEdit(todo.id)">✍</button>
+            <button v-if="sidebar" @click="removeTask()">❌</button>
+            <button v-else @click="handleDelete(todo.id)">❌</button>
         </div>
     </div>
 </template>
 <script>
-    import {mapState} from 'pinia'
+    import {mapState, mapActions} from 'pinia'
     import {useTodoStore} from '@/stores/todoStates'
     export default {
-        props: ['todo', 'handleCheck', 'handleEdit', 'handleDelete', 'handleDoing', 'editingItem', 'index'],
+        props: ['todo', 'handleEdit', 'handleDelete', 'handleDoing', 'editingItem', 'index', 'sidebar', 'stoppage'],
         data() {
             return {
                 checked: false,
@@ -51,12 +52,18 @@
             }
         },
         methods: {
+            ...mapActions(useTodoStore, ['handleCheck', 'setCurrentTask']),
             // toggle function to check and uncheck items done 
             async handleCheckLocal() {
                 await Promise.resolve(this.checked = !this.checked)
                 .then(() => {
                     this.handleCheck(this.todo.id, this.checked)
                 })
+            },
+            removeTask(){
+                if(confirm('Remove task from doing')){
+                    this.setCurrentTask(this.currentTask)
+                }
             }
         },
     }
@@ -92,13 +99,36 @@
         50% {border-color: green;}
         100% {border-color: #CEBEA4}
     }
-    .showDoing .actions button:first-child span {
+    .showDoing .actions button:first-child,
+    .sidebar .actions button.blink {
+        background-color: #57CB4C;
+        border:none
+    }
+    .showDoing .actions button:first-child span, 
+    .sidebar .actions button:first-child span {
         animation: moving 3s infinite ease-in-out;
     }
     @keyframes moving {
         0% {opacity: 0;}
         50% {opacity: 0.5}
         100% {opacity: 1}
+    }
+    .sidebar{
+        /* background: #fff; */
+        border: 2px solid #FF5631;
+        animation: doing-side 3s infinite ease-in-out;
+    }
+    @keyframes doing-side {
+        0% {border-color: #FF5631;}
+        50% {border-color: green;}
+        100% {border-color: #FF5631}
+    }
+    .sidebar.stoppage{
+        background: red;
+        color:#fff
+    }
+    .sidebar.stoppage .check{
+        border: 1px solid #fff
     }
     .check{
         padding: 20px;
@@ -129,7 +159,7 @@
         gap: 5px;
     }
     .actions button {
-        width: 50%;
+        width: 100%;
         border: none;
         outline: none;
         border-radius: 10px;
@@ -141,8 +171,8 @@
     .actions button:first-child{
         /* border: 2px solid green; */
     }
-    .actions button:last-child{
-        /* border: 2px solid red; */
+    .actions button:last-child .side{
+        width: 100%;
     }
 
     @media screen and (max-width: 480px){

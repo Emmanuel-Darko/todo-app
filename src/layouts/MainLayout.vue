@@ -9,6 +9,9 @@
         <aside class="side-view">
             <slot name="sidebar"></slot>
         </aside>
+        <footer class="footer">
+            <slot name="footer"></slot>
+        </footer>
     </div>
 </template>
 
@@ -28,8 +31,9 @@
         align-items: center;
         justify-content: start;
         gap: 50px;
+        position: relative;
         /* padding-top: 20px; */
-        padding-bottom: 50px;
+        /* padding-bottom: 50px; */
     }
     .app-container .header-view{
         width: 100%;
@@ -45,6 +49,11 @@
     }
     .app-container .side-view{
         z-index: 200;
+    }
+    footer.footer{
+        width: 100%;
+        position: absolute;
+        bottom: 0;
     }
 
     @media screen and (min-width: 768px){

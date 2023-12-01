@@ -1,6 +1,6 @@
 <template>
     <div class="header">
-        <h1>KODE<span>TODO</span></h1>
+        <h1>TASK<span>MASTER</span></h1>
         <IconEcosystem @click="toggleSide()" style="color: #CEBEA4; cursor:pointer"/>
     </div>
 </template>
