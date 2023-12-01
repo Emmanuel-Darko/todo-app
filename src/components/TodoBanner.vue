@@ -51,6 +51,14 @@
         font-weight: bolder;
     }
 
+    /* for galaxy fold screens */
+    @media screen and (max-width: 300px) {
+        .banner {
+            gap: 20px;
+        }
+    }
+
+    /* for tablet screens */
     @media screen and (min-width:768px){
         .banner{
             padding: 30px 0px;

@@ -56,7 +56,23 @@
         bottom: 0;
     }
 
-    @media screen and (min-width: 768px){
+    /* for galaxy fold screens */
+    @media screen and (max-width: 300px) {
+        .app-container .body-view{
+            margin-top: 30%;
+        }
+    }
+
+    /* for tablet screens */
+    @media screen and (min-width: 768px) and (max-width:1023px) {
+        .app-container .body-view{
+            width: 60%;
+            margin-top: 10%;
+        }
+    }
+
+    /* for laptop/desktop screens */
+    @media screen and (min-width: 1024px) {
         .app-container .body-view{
             width: 35%;
             margin-top: 10%;

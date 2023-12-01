@@ -17,7 +17,7 @@
 <style scoped>
     .container{
         /* background-color: #CEBEA4; */
-        padding: 5px;
+        padding: 10px 5px;
         font-family: monospace;
         text-align: center;
         color: #fff;
